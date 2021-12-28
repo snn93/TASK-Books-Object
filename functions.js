@@ -6,7 +6,7 @@
  */
 
 const books = require("./books.json");
-// console.log(book[0]);
+console.log(books[0]);
 
 /**************************************************************
  * numberOfAuthors(book)
@@ -14,9 +14,9 @@ const books = require("./books.json");
  * - returns the number of authors that the book has
  ****************************************************************/
 function numberOfAuthors(book) {
-  // Your code here
+  return book.authors.length;
 }
-// console.log(numberOfAuthors(books[0]))
+console.log(numberOfAuthors(books[0]));
 
 /**************************************************************
  * getBookById(bookId, books):
@@ -27,9 +27,10 @@ function numberOfAuthors(book) {
  * BONUS: use iteration method `.find()`
  ****************************************************************/
 function getBookById(bookId, books) {
-  // Your code here
+  books.find((element) => element.id == bookId);
 }
-// console.log(getBookById(38, books))
+
+console.log(getBookById(38, books));
 
 /**************************************************************
  * getbookByauthorName(authorName, books):
@@ -40,8 +41,13 @@ function getBookById(bookId, books) {
  * BONUS: use iteration methods `.find()` and `.some()`
  ****************************************************************/
 function getbookByauthorName(authorName, books) {
-  // Your code here
+  return books.find((book) =>
+    book.authors.some((author) => author.name == authorName)
+  );
 }
+
+console.log(getbookByauthorName("Oliver Sachs", books));
+
 // console.log(getbookByauthorName("Neil Gaiman", books));
 
 /**************************************************************
@@ -54,9 +60,10 @@ function getbookByauthorName(authorName, books) {
 
   ****************************************************************/
 function addSummaryToBook(summary, book) {
-  // Your code here
+  book.summary = summary;
+  return book;
 }
-// console.log(addSummaryToBook("this is good book about i dont remember what", books[0]));
+console.log(addSummaryToBook("worth reading", books[0]));
 
 /**************************************************************
   * getBookProperty(property, book):
@@ -67,7 +74,10 @@ function addSummaryToBook(summary, book) {
 
   ****************************************************************/
 function getBookProperty(property, book) {
-  // Your code here
+  // return book.color;
+  return book[property];
+  // wayed a7san w after we just conslo what we want
 }
-// console.log(getBookProperty("color", books[0]));
-// console.log(getBookProperty("title", books[0]));
+
+console.log(getBookProperty("color", books[0]));
+console.log(getBookProperty("title", books[3]));
